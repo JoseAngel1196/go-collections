@@ -47,12 +47,12 @@ jobs:
           echo hello world
 
       - name: Echo the release
-        shell: bash
-        run: echo ${{ steps.goreleaser.metadata.tag }}
+        run: |
+          echo ${{ steps.goreleaser.metadata.tag }}
 
       - name: Echo the version 2
-        shell: bash
-        run: echo ${{ steps.goreleaser.outputs.metadata.version }}
+        run: |
+          echo ${{ steps.goreleaser.outputs.metadata.version }}
 
       # - name: Create release
       #   uses: actions/create-release@v1
