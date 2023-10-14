@@ -40,12 +40,21 @@ jobs:
         id: get_version
         run: echo "::set-output name=version::$(goreleaser release --skip-publish --snapshot --rm-dist | grep 'Version' | cut -d ' ' -f 2)"
 
-      - name: Create release
-        uses: actions/create-release@v1
-        with:
-          tag_name: ${{ steps.get_version.outputs.version }}
-          release_name: Release ${{ steps.get_version.outputs.version }}
-          body: Release of version ${{ steps.get_version.outputs.version }}
-          draft: true
-        env:
-          GITHUB_TOKEN: ${{ secrets.GO_RELEASER_TOKEN }}
+      - name: Echo the version
+        run: "echo Tag: ${{ steps.get_version.outputs.version }}"
+
+      - name: Echo the release
+        run: "echo Release ID: ${{ steps.create_release.outputs.id }}"
+
+      - name: Echo the release body
+        run: "echo Release Body: ${{ steps.create_release.outputs.body }}"
+
+      # - name: Create release
+      #   uses: actions/create-release@v1
+      #   with:
+      #     tag_name: ${{ steps.get_version.outputs.version }}
+      #     release_name: Release ${{ steps.get_version.outputs.version }}
+      #     body: Release of version ${{ steps.get_version.outputs.version }}
+      #     draft: true
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GO_RELEASER_TOKEN }}
