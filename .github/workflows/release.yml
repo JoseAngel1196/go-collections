@@ -43,8 +43,8 @@ jobs:
           args: release --skip=publish --snapshot --clean
 
       - name: Echo the version
-        shell: bash
-        run: echo ${{ steps.goreleaser.outputs.Metadata.version }}
+        run: |
+          echo hello world
 
       - name: Echo the release
         shell: bash
