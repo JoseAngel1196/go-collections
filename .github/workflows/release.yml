@@ -43,13 +43,13 @@ jobs:
           args: release --skip=publish --snapshot --clean
 
       - name: Echo the version
-        run: "echo Tag: ${{ steps.goreleaser.outputs.Metadata.version }}"
+        run: echo ${{ steps.goreleaser.outputs.Metadata.version }}
 
       - name: Echo the release
-        run: "echo Release ID: ${{ steps.goreleaser.metadata.tag }}"
+        run: echo ${{ steps.goreleaser.metadata.tag }}
 
       - name: Echo the version 2
-        run: "echo Tag: ${{ steps.goreleaser.outputs.metadata.version }}"
+        run: echo ${{ steps.goreleaser.outputs.metadata.version }}
 
       # - name: Create release
       #   uses: actions/create-release@v1
