@@ -42,24 +42,12 @@ jobs:
         with:
           args: release --skip=publish --snapshot --clean
 
-      - name: Echo the version
-        run: |
-          echo hello world
-
-      - name: Echo the release
-        run: |
-          echo ${{ steps.goreleaser.Metadata.tag }}
-
-      - name: Echo the version 2
-        run: |
-          echo ${{ steps.goreleaser.outputs.Metadata.version }}
-
-      # - name: Create release
-      #   uses: actions/create-release@v1
-      #   with:
-      #     tag_name: ${{ steps.get_version.outputs.version }}
-      #     release_name: Release ${{ steps.get_version.outputs.version }}
-      #     body: Release of version ${{ steps.get_version.outputs.version }}
-      #     draft: true
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GO_RELEASER_TOKEN }}
+      - name: Create release
+        uses: actions/create-release@v1
+        with:
+          tag_name: hey
+          release_name: Release hey
+          body: Release of version hey
+          draft: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GO_RELEASER_TOKEN }}
