@@ -48,11 +48,11 @@ jobs:
 
       - name: Echo the release
         run: |
-          echo ${{ steps.goreleaser.metadata.tag }}
+          echo ${{ steps.goreleaser.Metadata.tag }}
 
       - name: Echo the version 2
         run: |
-          echo ${{ steps.goreleaser.outputs.metadata.version }}
+          echo ${{ steps.goreleaser.outputs.Metadata.version }}
 
       # - name: Create release
       #   uses: actions/create-release@v1
