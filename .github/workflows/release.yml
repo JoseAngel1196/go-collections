@@ -40,16 +40,13 @@ jobs:
         id: goreleaser
         uses: goreleaser/goreleaser-action@v5
         with:
-          args: release --skip-publish --snapshot --clean
+          args: release --skip=publish --snapshot --clean
 
       - name: Echo the version
-        run: "echo Tag: ${{ steps.goreleaser.outputs.version }}"
+        run: "echo Tag: ${{ steps.goreleaser.Metadata.version }}"
 
       - name: Echo the release
-        run: "echo Release ID: ${{ steps.goreleaser.outputs.id }}"
-
-      - name: Echo the release body
-        run: "echo Release Body: ${{ steps.goreleaser.outputs.body }}"
+        run: "echo Release ID: ${{ steps.goreleaser.Metadata.tag }}"
 
       # - name: Create release
       #   uses: actions/create-release@v1
