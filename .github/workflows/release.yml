@@ -27,8 +27,10 @@ jobs:
         with:
           go-version: ${{ matrix.go }}
 
+      - name: Install dependencies
+        run: go mod download
+
       - name: Run GoReleaser
-        id: goreleaser
         uses: goreleaser/goreleaser-action@v5
         with:
           args: release --clean
